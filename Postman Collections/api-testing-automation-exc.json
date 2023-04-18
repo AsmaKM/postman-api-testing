@@ -1,0 +1,762 @@
+{
+	"info": {
+		"_postman_id": "c1b7ba7d-9c3a-4c5e-a34a-feaefd8886cd",
+		"name": "Task2_WithCSV",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Account",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "54b8197e-e09b-4289-bb4a-f7562e880818",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "defe582c-94bf-4b20-b1d8-4722253c6dee",
+						"exec": [
+							"pm.test(\"New Account Created\", function(){\r",
+							"    bodyData = JSON.parse(responseBody)\r",
+							"    code_resp = bodyData.responseCode\r",
+							"    pm.expect(code_resp).to.equal(201);\r",
+							"    });\r",
+							"\r",
+							"    \r",
+							"    var test_e = pm.iterationData.get(\"email\");\r",
+							"        console.log(test_p);\r",
+							"\r",
+							"\r",
+							"    if( !test_e) {\r",
+							"      console.log(\"Email is not defined\");\r",
+							"    }\r",
+							"\r",
+							"    var test_p = pm.iterationData.get(\"password\");\r",
+							"\r",
+							"    console.log(test_p);\r",
+							"\r",
+							"    if( !test_p) {\r",
+							"        console.log(\"Password is not defined\");\r",
+							"    }\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "1934938d-cc89-4491-9841-838e82acecfa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "{{title}}",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "{{birth_date}}",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "{{birth_month}}",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "{{birth_year}}",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "{{firstname}}",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "{{lastname}}",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "{{company}}",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "{{address1}}",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "{{address2}}",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "{{country}}",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "{{zipcode}}",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "{{state}}",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "{{city}}",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "{{mobile_number}}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": "https://automationexercise.com/api/createAccount"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a23774f7-f012-453e-b397-35bcea54b8e2",
+						"exec": [
+							"pm.test(\"Fetched the Account Details\", function () {\r",
+							"    bodyData = JSON.parse(responseBody)\r",
+							"    code_resp = bodyData.responseCode\r",
+							"    pm.expect(code_resp).to.equal(200);});\r",
+							"\r",
+							"\r",
+							"bodyData = JSON.parse(responseBody)\r",
+							"\r",
+							"id_resp = bodyData.user.id\r",
+							"pm.environment.set(\"id_resp\")\r",
+							"\r",
+							"//assign get value and print\r",
+							"name_resp = bodyData.user.name\r",
+							"pm.environment.set(\"name_resp\")\r",
+							"console.log(\"Name: \" + name_resp)\r",
+							"\r",
+							"email_resp = bodyData.user.email\r",
+							"pm.environment.set(\"email_resp\", bodyData.user.email)\r",
+							"console.log(\"Email: \" + email_resp)\r",
+							"\r",
+							"title_resp = bodyData.user.title\r",
+							"pm.environment.set(\"title_resp\", bodyData.user.title)\r",
+							"console.log(\"Title: \" + title_resp)\r",
+							"\r",
+							"birth_day_resp = bodyData.user.birth_day\r",
+							"pm.environment.set(\"birth_day_resp\", bodyData.user.birth_day)\r",
+							"console.log(\"Birth date: \" + birth_day_resp)\r",
+							"\r",
+							"birth_month_resp = bodyData.user.birth_month\r",
+							"pm.environment.set(\"birth_month_resp\",bodyData.user.birth_month)\r",
+							"console.log(\"Birth Month: \" + birth_month_resp)\r",
+							"\r",
+							"birth_year_resp = bodyData.user.birth_year\r",
+							"pm.environment.set(\"birth_year_resp\", bodyData.user.birth_year)\r",
+							"console.log(\"Birth Year: \" + birth_year_resp)\r",
+							"\r",
+							"firstname_resp = bodyData.user.first_name\r",
+							"pm.environment.set(\"firstname_resp\", bodyData.user.first_name)\r",
+							"console.log(\"First Name: \" + firstname_resp)\r",
+							"\r",
+							"lastname_resp = bodyData.user.last_name\r",
+							"pm.environment.set(\"lastname_resp\", bodyData.user.last_name)\r",
+							"console.log(\"Last Name: \" + lastname_resp)\r",
+							"\r",
+							"company_resp = bodyData.user.company\r",
+							"pm.environment.set(\"company_resp\", bodyData.user.company)\r",
+							"console.log(\"Company Name: \" + company_resp)\r",
+							"\r",
+							"address1_resp = bodyData.user.address1\r",
+							"pm.environment.set(\"address1_resp\",bodyData.user.address1)\r",
+							"console.log(\"Address: \" + address1_resp)\r",
+							"\r",
+							"address2_resp = bodyData.user.address2\r",
+							"pm.environment.set(\"address2_resp\", bodyData.user.address2)\r",
+							"console.log(\"Address 2: \" + address2_resp)\r",
+							"\r",
+							"country_resp = bodyData.user.country\r",
+							"pm.environment.set(\"country_resp\", bodyData.user.country)\r",
+							"console.log(\"Country: \" + country_resp)\r",
+							"\r",
+							"state_resp = bodyData.user.state\r",
+							"pm.environment.set(\"state_resp\",bodyData.user.state)\r",
+							"console.log(\"State: \" + state_resp)\r",
+							"\r",
+							"city_resp = bodyData.user.city\r",
+							"pm.environment.set(\"city_resp\", bodyData.user.city)\r",
+							"console.log(\"City: \" + city_resp)\r",
+							"\r",
+							"zipcode_resp = bodyData.user.zipcode\r",
+							"pm.environment.set(\"zipcode_resp\",bodyData.user.zipcode)\r",
+							"console.log(\"Zipcode: \" + zipcode_resp)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "f4dd424f-8317-4ddb-b009-07f1e7a12806",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/getUserDetailByEmail?email={{email}}",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{email}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Acount Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2ab90c8-5e42-48bf-9eac-53c7858cc92a",
+						"exec": [
+							"pm.test(\"Verify Account Details\", function () {\r",
+							"    pm.expect(name_resp).to.equal(pm.iterationData.get(\"name\"));\r",
+							"    pm.expect(email_resp).to.equal(pm.iterationData.get(\"email\"));\r",
+							"    pm.expect(title_resp).to.equal(pm.iterationData.get(\"title\"));\r",
+							"    pm.expect(parseInt(birth_day_resp)).to.equal(pm.iterationData.get(\"birth_date\"));\r",
+							"    pm.expect(parseInt(birth_month_resp)).to.equal(pm.iterationData.get(\"birth_month\"));\r",
+							"    pm.expect(parseInt(birth_year_resp)).to.equal(pm.iterationData.get(\"birth_year\"));\r",
+							"    pm.expect(firstname_resp).to.equal(pm.iterationData.get(\"firstname\"));\r",
+							"    pm.expect(lastname_resp).to.equal(pm.iterationData.get(\"lastname\"));\r",
+							"    pm.expect(company_resp).to.equal(pm.iterationData.get(\"company\"));\r",
+							"    pm.expect(address1_resp).to.equal(pm.iterationData.get(\"address1\"));\r",
+							"    pm.expect(address2_resp).to.equal(pm.iterationData.get(\"address2\"));\r",
+							"    pm.expect(country_resp).to.equal(pm.iterationData.get(\"country\"));\r",
+							"    pm.expect(zipcode_resp).to.equal(pm.iterationData.get(\"zipcode\"));\r",
+							"    pm.expect(state_resp).to.equal(pm.iterationData.get(\"state\"));\r",
+							"    pm.expect(city_resp).to.equal(pm.iterationData.get(\"city\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7ae1fcc3-62a1-4745-bd69-6665fbd1ce4f",
+						"exec": [
+							"pm.environment.get(name_resp)\r",
+							"pm.environment.get(email_resp)\r",
+							"pm.environment.get(title_resp)\r",
+							"pm.environment.get(birth_day_resp)\r",
+							"pm.environment.get(birth_month_resp)\r",
+							"pm.environment.get(birth_year_resp)\r",
+							"pm.environment.get(firstname_resp)\r",
+							"pm.environment.get(lastname_resp)\r",
+							"pm.environment.get(company_resp)\r",
+							"pm.environment.get(address1_resp)\r",
+							"pm.environment.get(address2_resp)\r",
+							"pm.environment.get(country_resp)\r",
+							"pm.environment.get(state_resp)\r",
+							"pm.environment.get(city_resp)\r",
+							"pm.environment.get(zipcode_resp)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "d9aabbb1-90cc-493d-b3a6-828ef3308794",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/verifyLogin?email={{email}}&password={{password}}",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{email}}"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e9ec1e4-0290-4541-8b59-03af509d3f34",
+						"exec": [
+							"pm.test(\"Account Details Update\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"    console.log(\"OK. Status code: \"+pm.response.status)\r",
+							"   \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "57fb72dd-5f5a-4fbe-8c52-d925ac88f03d",
+						"exec": [
+							"pm.environment.get(id_resp)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "ab02039c-56c0-4c23-94ea-81b9613a7f9f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "{{title}}",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "{{birth_date}}",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "{{birth_month}}",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "{{birth_year}}",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "{{firstname}}",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "{{lastname}}",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "{{company}}",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "Address Changed",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "Address Changed",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "{{country}}",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "{{zipcode}}",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "{{state}}",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "{{city}}",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "{{mobile_number}}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/updateAccount?id={{id}}",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"updateAccount"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Updated Account Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a23774f7-f012-453e-b397-35bcea54b8e2",
+						"exec": [
+							"pm.test(\"Fetched updated Account Details\", function () {\r",
+							"    bodyData = JSON.parse(responseBody)\r",
+							"    code_resp = bodyData.responseCode\r",
+							"    pm.expect(code_resp).to.equal(200);\r",
+							"    });\r",
+							"\r",
+							"bodyData = JSON.parse(responseBody)\r",
+							"\r",
+							"id_resp = bodyData.user.id\r",
+							"pm.environment.set(\"id_resp\")\r",
+							"\r",
+							"//assign get value and print\r",
+							"name_resp = bodyData.user.name\r",
+							"pm.environment.set(\"name_resp\")\r",
+							"console.log(\"Name: \" + name_resp)\r",
+							"\r",
+							"email_resp = bodyData.user.email\r",
+							"pm.environment.set(\"email_resp\", bodyData.user.email)\r",
+							"console.log(\"Email: \" + email_resp)\r",
+							"\r",
+							"title_resp = bodyData.user.title\r",
+							"pm.environment.set(\"title_resp\", bodyData.user.title)\r",
+							"console.log(\"Title: \" + title_resp)\r",
+							"\r",
+							"birth_day_resp = bodyData.user.birth_day\r",
+							"pm.environment.set(\"birth_day_resp\", bodyData.user.birth_day)\r",
+							"console.log(\"Birth date: \" + birth_day_resp)\r",
+							"\r",
+							"birth_month_resp = bodyData.user.birth_month\r",
+							"pm.environment.set(\"birth_month_resp\",bodyData.user.birth_month)\r",
+							"console.log(\"Birth Month: \" + birth_month_resp)\r",
+							"\r",
+							"birth_year_resp = bodyData.user.birth_year\r",
+							"pm.environment.set(\"birth_year_resp\", bodyData.user.birth_year)\r",
+							"console.log(\"Birth Year: \" + birth_year_resp)\r",
+							"\r",
+							"firstname_resp = bodyData.user.first_name\r",
+							"pm.environment.set(\"firstname_resp\", bodyData.user.first_name)\r",
+							"console.log(\"First Name: \" + firstname_resp)\r",
+							"\r",
+							"lastname_resp = bodyData.user.last_name\r",
+							"pm.environment.set(\"lastname_resp\", bodyData.user.last_name)\r",
+							"console.log(\"Last Name: \" + lastname_resp)\r",
+							"\r",
+							"company_resp = bodyData.user.company\r",
+							"pm.environment.set(\"company_resp\", bodyData.user.company)\r",
+							"console.log(\"Company Name: \" + company_resp)\r",
+							"\r",
+							"address1_resp = bodyData.user.address1\r",
+							"pm.environment.set(\"address1_resp\",bodyData.user.address1)\r",
+							"console.log(\"New Address: \" + address1_resp)\r",
+							"\r",
+							"address2_resp = bodyData.user.address2\r",
+							"pm.environment.set(\"address2_resp\", bodyData.user.address2)\r",
+							"console.log(\"New Address 2: \" + address2_resp)\r",
+							"\r",
+							"country_resp = bodyData.user.country\r",
+							"pm.environment.set(\"country_resp\", bodyData.user.country)\r",
+							"console.log(\"Country: \" + country_resp)\r",
+							"\r",
+							"state_resp = bodyData.user.state\r",
+							"pm.environment.set(\"state_resp\",bodyData.user.state)\r",
+							"console.log(\"State: \" + state_resp)\r",
+							"\r",
+							"city_resp = bodyData.user.city\r",
+							"pm.environment.set(\"city_resp\", bodyData.user.city)\r",
+							"console.log(\"City: \" + city_resp)\r",
+							"\r",
+							"zipcode_resp = bodyData.user.zipcode\r",
+							"pm.environment.set(\"zipcode_resp\",bodyData.user.zipcode)\r",
+							"console.log(\"Zipcode: \" + zipcode_resp)\r",
+							"\r",
+							"// pm.test(\"Address has been updated\", function(){\r",
+							"//     pm.expect(address1_resp).to.not.equal(pm.iterationData.get(\"address1\"))\r",
+							"//     pm.expect(address2_resp).to.not.equal(pm.iterationData.get(\"address2\"))\r",
+							"    \r",
+							"// });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "4ba78f4d-1a9e-4411-a359-94762ff8c0bf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/getUserDetailByEmail?email={{email}}",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{email}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "37598ee8-d90e-4e74-9abe-5517b9cbf504",
+						"exec": [
+							"pm.test(\"Delete Account\", function () {\r",
+							"    bodyData = JSON.parse(responseBody)\r",
+							"    code_resp = bodyData.responseCode\r",
+							"    pm.expect(code_resp).to.equal(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "9fe8710c-af5f-42f0-8334-8042040418d1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": "https://automationexercise.com/api/deleteAccount"
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Account is deleted",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b527e467-e5e1-48f0-a571-f7f73423c5ca",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9eedd0e-1f45-4477-8841-e901e60c7cfb",
+						"exec": [
+							"pm.test(\"Check if Account is deleted\", function(){\r",
+							"    bodyData = JSON.parse(responseBody)\r",
+							"    code_resp = bodyData.responseCode\r",
+							"    pm.expect(code_resp).to.equal(404);\r",
+							"    console.log(\"Account has been deleted successfully!!!\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "99d25419-67b7-48a6-8acc-3954fd15b934",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/getUserDetailByEmail?email={{email}}",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{email}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
