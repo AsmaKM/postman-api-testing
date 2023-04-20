@@ -51,7 +51,7 @@
 					}
 				}
 			],
-			"_postman_id": "1934938d-cc89-4491-9841-838e82acecfa",
+			"id": "1934938d-cc89-4491-9841-838e82acecfa",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -146,10 +146,7 @@
 							"value": "{{mobile_number}}",
 							"type": "text"
 						}
-					],
-					"options": {
-						"urlencoded": {}
-					}
+					]
 				},
 				"url": "https://automationexercise.com/api/createAccount"
 			},
@@ -239,7 +236,7 @@
 					}
 				}
 			],
-			"_postman_id": "f4dd424f-8317-4ddb-b009-07f1e7a12806",
+			"id": "f4dd424f-8317-4ddb-b009-07f1e7a12806",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -248,10 +245,7 @@
 				"header": [],
 				"body": {
 					"mode": "urlencoded",
-					"urlencoded": [],
-					"options": {
-						"urlencoded": {}
-					}
+					"urlencoded": []
 				},
 				"url": {
 					"raw": "https://automationexercise.com/api/getUserDetailByEmail?email={{email}}",
@@ -328,7 +322,7 @@
 					}
 				}
 			],
-			"_postman_id": "d9aabbb1-90cc-493d-b3a6-828ef3308794",
+			"id": "d9aabbb1-90cc-493d-b3a6-828ef3308794",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -348,10 +342,7 @@
 							"value": "{{password}}",
 							"type": "text"
 						}
-					],
-					"options": {
-						"urlencoded": {}
-					}
+					]
 				},
 				"url": {
 					"raw": "https://automationexercise.com/api/verifyLogin?email={{email}}&password={{password}}",
@@ -407,7 +398,7 @@
 					}
 				}
 			],
-			"_postman_id": "ab02039c-56c0-4c23-94ea-81b9613a7f9f",
+			"id": "ab02039c-56c0-4c23-94ea-81b9613a7f9f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -502,10 +493,7 @@
 							"value": "{{mobile_number}}",
 							"type": "text"
 						}
-					],
-					"options": {
-						"urlencoded": {}
-					}
+					]
 				},
 				"url": {
 					"raw": "https://automationexercise.com/api/updateAccount?id={{id}}",
@@ -608,17 +596,17 @@
 							"pm.environment.set(\"zipcode_resp\",bodyData.user.zipcode)\r",
 							"console.log(\"Zipcode: \" + zipcode_resp)\r",
 							"\r",
-							"// pm.test(\"Address has been updated\", function(){\r",
-							"//     pm.expect(address1_resp).to.not.equal(pm.iterationData.get(\"address1\"))\r",
-							"//     pm.expect(address2_resp).to.not.equal(pm.iterationData.get(\"address2\"))\r",
+							"pm.test(\"Address has been updated\", function(){\r",
+							"    pm.expect(address1_resp).not.equal(pm.iterationData.get(\"address1\"))\r",
+							"    pm.expect(address2_resp).not.equal(pm.iterationData.get(\"address2\"))\r",
 							"    \r",
-							"// });"
+							"});"
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
-			"_postman_id": "4ba78f4d-1a9e-4411-a359-94762ff8c0bf",
+			"id": "4ba78f4d-1a9e-4411-a359-94762ff8c0bf",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -627,10 +615,7 @@
 				"header": [],
 				"body": {
 					"mode": "urlencoded",
-					"urlencoded": [],
-					"options": {
-						"urlencoded": {}
-					}
+					"urlencoded": []
 				},
 				"url": {
 					"raw": "https://automationexercise.com/api/getUserDetailByEmail?email={{email}}",
@@ -672,7 +657,7 @@
 					}
 				}
 			],
-			"_postman_id": "9fe8710c-af5f-42f0-8334-8042040418d1",
+			"id": "9fe8710c-af5f-42f0-8334-8042040418d1",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -692,10 +677,7 @@
 							"value": "{{password}}",
 							"type": "text"
 						}
-					],
-					"options": {
-						"urlencoded": {}
-					}
+					]
 				},
 				"url": "https://automationexercise.com/api/deleteAccount"
 			},
@@ -730,7 +712,7 @@
 					}
 				}
 			],
-			"_postman_id": "99d25419-67b7-48a6-8acc-3954fd15b934",
+			"id": "99d25419-67b7-48a6-8acc-3954fd15b934",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
