@@ -9,7 +9,7 @@ pipeline{
     stage('Test'){
       steps {
         echo 'Testing...'
-        bat label: 'API POSTMEN COLLECTION tests', script: 'newman run Postman Collections/api-testing-automation-exc.json -d Postman Collections/data.csv'
+        bat label: 'API POSTMEN COLLECTION tests', script: 'newman run "Postman Collections/api-testing-automation-exc.json" -d "Postman Collections/data.csv"'
       }
     }
     stage('Deploy'){
